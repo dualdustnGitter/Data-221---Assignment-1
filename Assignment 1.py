@@ -25,12 +25,23 @@ def printMultiplyUptoThreshold(threshold):
     print("Current Multiplier: " + str(currentNumberMultiplier))
     print("Product reached: " + str(totalProduct))
 
-
+# run the function (program)
 printMultiplyUptoThreshold(100)
 
 
-###
-# Question 2
+### Question 2
+# make a function that takes in a string that
 # 
-# 
+#   stores each word in a a dictionary as a key 
+#   then the value is a list that lists 
 ###
+
+def dictionaryTheString(stringInput):
+    lastIndexNumber = 0
+    currentIndexNumber = 0
+    dictionaryOfWordsInString = {}
+
+    for characterInStringInput in stringInput:
+        if characterInStringInput == " ":
+            dictionaryTheString[lastIndexNumber, currentIndexNumber] = "length: " + ""
+        currentIndexNumber = currentIndexNumber + 1
