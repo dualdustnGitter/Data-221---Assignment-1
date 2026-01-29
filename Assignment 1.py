@@ -95,3 +95,18 @@ print(dictionaryTheStringProperties("data science rules lol"))
 #   skip pairs where y is negative
 #   store valid results and prints as list
 ###
+
+def exponentListPairs(listOfPairs) :
+    # initializing variables
+    powerAnswers = []
+
+
+    # assuming that a list of pairs of integers are inputted
+
+    for numberPairIn in listOfPairs:
+        if len(numberPairIn) == 2 and numberPairIn[1] >= 0:
+            powerAnswers.append(numberPairIn[0] ** numberPairIn[1])
+
+    print(powerAnswers)
+
+exponentListPairs([[5,2], [3,-1], [4,3], [2,0]])
