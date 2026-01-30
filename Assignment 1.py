@@ -140,9 +140,10 @@ print()
 # 
 ### 
 print("Question 4:")
-
+# import random package
 from random import random
 
+#intiialize variables
 listOfValueIndicesBiggerThenSpecificValue = []
 listOfRandomValues = [random() for i in range(20)]
 randomValueToCompareTo = random()
@@ -150,15 +151,20 @@ randomValueToCompareTo = random()
 listOfRandomValues = sorted(listOfRandomValues)
 
 
-
+# go through elements of list using indices
 for valueIndex in range(0,len(listOfRandomValues)):
+    # if the value at current Index is bigger then the random Target value
+    # add it (index) to the list of value indices bigger then target 
     if listOfRandomValues[valueIndex] > randomValueToCompareTo:
         listOfValueIndicesBiggerThenSpecificValue.append(valueIndex)
     
+# printing
 print("List of indices of values greater then the random Value: " + str(listOfValueIndicesBiggerThenSpecificValue))
 
 print("Sorted list of random values: " + str(listOfRandomValues))
 print("Random value to be greater of: " + str(randomValueToCompareTo))
+
+# print first occurance of the same random number in list if valid
 if randomValueToCompareTo in listOfRandomValues:
     print("Index of random value in list: " + str(listOfRandomValues.index(randomValueToCompareTo)))
 print()
@@ -287,3 +293,11 @@ def convertSecondsToExpanded(secondsInput):
 print(convertSecondsToExpanded(45030))
 
 
+### Question 8
+# create a function that converts seconds (since midnight) into
+#   
+#   Hours
+#   Minutes
+#   Seconds 
+#   AM/PM
+###  
