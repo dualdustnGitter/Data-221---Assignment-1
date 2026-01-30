@@ -5,6 +5,7 @@
 #   track current multiplier
 #   print final product
 ###
+print("Question 1:")
 
 def printMultiplyUptoThreshold(threshold):
     # track current product, and current Multiplier
@@ -27,6 +28,7 @@ def printMultiplyUptoThreshold(threshold):
 
 # run the function (program)
 printMultiplyUptoThreshold(100)
+print()
 
 
 ### Question 2
@@ -35,6 +37,7 @@ printMultiplyUptoThreshold(100)
 #   stores each word in a a dictionary as a key 
 #   then the value is a list that lists 
 ###
+print("Question 2:")
 
 def dictionaryTheStringProperties(stringInput):
     # initial variable setting up
@@ -84,7 +87,7 @@ def dictionaryTheStringProperties(stringInput):
     return(dictionaryOfWordsInString)
 
 print(dictionaryTheStringProperties("data science rules lol"))
-
+print()
 
 
 ### Question 3 
@@ -96,6 +99,7 @@ print(dictionaryTheStringProperties("data science rules lol"))
 #   skip pairs where y is negative
 #   store valid results and prints as list
 ###
+print("Question 3:")
 
 # initialiizing variables
 # list of base and exponent number pairs
@@ -121,3 +125,83 @@ for numberPairInList in listOfPairs:
 
 # print it
 print(listOfPowerAnswers)
+print()
+
+
+
+### Question 4
+# given list of random numbers 0-1
+# and a another random value 0-1
+#   
+#   program that prints list of numbers's indices greater it
+#   sorted list
+#   value of the random chosen value
+#   and first index of matching number (if any)
+# 
+### 
+print("Question 4:")
+
+from random import random
+
+listOfValueIndicesBiggerThenSpecificValue = []
+listOfRandomValues = [random() for i in range(20)]
+randomValueToCompareTo = random()
+
+listOfRandomValues = sorted(listOfRandomValues)
+
+
+
+for valueIndex in range(0,len(listOfRandomValues)):
+    if listOfRandomValues[valueIndex] > randomValueToCompareTo:
+        listOfValueIndicesBiggerThenSpecificValue.append(valueIndex)
+    
+print("List of indices of values greater then the random Value: " + str(listOfValueIndicesBiggerThenSpecificValue))
+
+print("Sorted list of random values: " + str(listOfRandomValues))
+print("Random value to be greater of: " + str(randomValueToCompareTo))
+if randomValueToCompareTo in listOfRandomValues:
+    print("Index of random value in list: " + str(listOfRandomValues.index(randomValueToCompareTo)))
+print()
+
+
+### Question 5
+# make a function that
+# 
+#   takes in 2 radii of 2 circles
+#   area of circle
+#   percentage of area covered of large circle by smaller circle (small area/big area)
+### 
+print("Question 5:")
+
+# import math 
+import math
+
+# function that returns percentage covered 
+def circleAreaCoverage(radiusOfCircle1, radiusOfCircle2):
+    # if either radii are not greater then 0
+    # return "invalid" response
+    if areaOfCircle1 <= 0 or areaOfCircle2 <= 0:
+            return "Invalid radii entered\nInputs must be greater then 0"
+
+    # calculate two circle's areas
+    areaOfCircle1 = radiusOfCircle1**2 * math.pi
+    areaOfCircle2 = radiusOfCircle2**2 * math.pi
+
+    # then calculate percentage of smaller circle covering the bigger circle
+    # if first circle is bigger calculate circle1/circle2
+    # otherwise calculate the other one
+    if (areaOfCircle1 > areaOfCircle2):
+        return str(areaOfCircle2/areaOfCircle1 * 100) + "%"
+    return str(areaOfCircle1/areaOfCircle2 * 100) + "%"
+
+print(circleAreaCoverage(1,2))
+
+
+
+### Question 6
+# make a function that takes in a list of numbers and returns a dictionary
+#   
+#   keys in dictionary are unique alues in the inputted list
+#   values are percentage of numbers of values that are less than or equal to that key
+###    
+
