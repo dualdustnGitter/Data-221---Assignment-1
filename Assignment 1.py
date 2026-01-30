@@ -180,7 +180,7 @@ import math
 def circleAreaCoverage(radiusOfCircle1, radiusOfCircle2):
     # if either radii are not greater then 0
     # return "invalid" response
-    if areaOfCircle1 <= 0 or areaOfCircle2 <= 0:
+    if radiusOfCircle1 <= 0 or radiusOfCircle2 <= 0:
             return "Invalid radii entered\nInputs must be greater then 0"
 
     # calculate two circle's areas
@@ -195,6 +195,7 @@ def circleAreaCoverage(radiusOfCircle1, radiusOfCircle2):
     return str(areaOfCircle1/areaOfCircle2 * 100) + "%"
 
 print(circleAreaCoverage(1,2))
+print()
 
 
 
@@ -204,4 +205,85 @@ print(circleAreaCoverage(1,2))
 #   keys in dictionary are unique alues in the inputted list
 #   values are percentage of numbers of values that are less than or equal to that key
 ###    
+print("Question 6:")
+
+def percentageOfElementsLesserEqual(listOfNumbers):
+    # initializing variables
+    sortedListofNumbers = sorted(listOfNumbers)
+    dictionaryOfNumbersWithCount = {}
+    dictionaryOfNumbersWithPercentages = {}
+
+    # first make a dictionary of sorted list with keys being unique in list
+    # the value of the keys are the amount of occurences in the list
+    for numberInList in sortedListofNumbers:
+        # if unique key alreayd in list then add 1
+        # otherwise set it as 1 occurence
+        if numberInList in list(dictionaryOfNumbersWithCount.keys()):
+            dictionaryOfNumbersWithCount[numberInList] = dictionaryOfNumbersWithCount[numberInList] + 1
+        else:
+            dictionaryOfNumbersWithCount[numberInList] = 1
+
+
+    # create a dictionary with the percentages of elements lesser then or equal to the current unique key
+    for uniqueKey in list(dictionaryOfNumbersWithCount.keys()):
+        # make variable of current index of current key
+        # then add up the key number of elements before that value then divide by total of elements in list
+        currentIndexOfUniqueKey = list(dictionaryOfNumbersWithCount.keys()).index(uniqueKey)
+        percentageOfElements = (sum(list(dictionaryOfNumbersWithCount.values())[0:currentIndexOfUniqueKey+1])) / len(listOfNumbers)
+
+        # set value of keys as the percentage
+        dictionaryOfNumbersWithPercentages[uniqueKey] = str(percentageOfElements*100) + "%"
+
+
+    return(dictionaryOfNumbersWithPercentages)
+
+print(percentageOfElementsLesserEqual([3,1,2,3,4,2]))
+print()
+
+
+### Question 7
+# create a function that converts seconds (since midnight) into
+#   
+#   Hours
+#   Minutes
+#   Seconds 
+#   AM/PM
+###  
+print("Question 7:")
+
+def convertSecondsToExpanded(secondsInput):
+    # checks if time inputted is valid (between 0 seconds and 24 hours)
+    # if invalid return amazing invalid message
+    if (secondsInput < 0):
+        return("Invalid time entered: Time inputted is less then 0 seconds")
+    elif(secondsInput > 86400):
+        return("Invalid tiem entered: Tiem inputted is more then 86400 seconds (24 hours)")
+    
+    # Set period as AM first
+    periodElement = "AM"
+
+    # create other variables, initial hours, minutes and seconds
+    hoursElement = secondsInput // 3600
+    actualHoursElement = hoursElement
+
+    minutesElement = secondsInput // 60 - hoursElement*60
+
+    actualSecondsElement = secondsInput - hoursElement*3600 - minutesElement*60
+
+    # convert hours to 12 hour format
+    # also make sure to change period to PM if 12 (noon) is reached/passed
+    if hoursElement >= 12:
+        periodElement = "PM"
+        if hoursElement > 12:
+            actualHoursElement = hoursElement - 12
+
+
+    # return output
+    return ("Current time:\n\tHours: " + str(actualHoursElement) 
+            + "\n\tMinutes: " + str(minutesElement)
+            + "\n\tSeconds: " + str(actualSecondsElement)
+            + "\n\tPeriod: " + periodElement)
+
+print(convertSecondsToExpanded(45030))
+
 
